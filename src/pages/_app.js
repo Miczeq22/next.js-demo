@@ -1,6 +1,9 @@
 import React from 'react';
 import NextApp from 'next/app';
 import { AppProvider } from '../providers/app.provider';
+import Head from 'next/head';
+
+import '../../.css/antd.less';
 
 export default class App extends NextApp {
   componentDidMount() {
@@ -16,6 +19,9 @@ export default class App extends NextApp {
 
     return (
       <>
+        <Head>
+          <title>Next.js | Demo App</title>
+        </Head>
         <AppProvider>
           <Component {...pageProps} key={router.route} />
         </AppProvider>

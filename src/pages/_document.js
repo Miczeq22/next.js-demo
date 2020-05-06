@@ -43,7 +43,6 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Raleway:400,500,700&display=swap"
             rel="stylesheet"
           ></link>
-          <title>Next.js | Demo App</title>
         </Head>
         <body>
           <Main />
