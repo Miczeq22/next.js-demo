@@ -1,11 +1,16 @@
 import styled from 'styled-components';
+import { ThemeType } from '../../../types';
 
 interface StyledBurgerProps {
   isOpen?: boolean;
+  type?: ThemeType;
 }
 
 export const StyledBurger = styled.button.attrs(
-  ({ isOpen = false }: StyledBurgerProps) => ({ isOpen })
+  ({ isOpen = false, type = 'primary' }: StyledBurgerProps) => ({
+    isOpen,
+    type,
+  })
 )`
   width: 32px;
   height: 32px;
@@ -25,7 +30,8 @@ export const StyledBurger = styled.button.attrs(
   & > div {
     width: 32px;
     height: 4px;
-    background-color: ${({ theme }) => theme.color.primary};
+    background-color: ${({ theme, type }) =>
+      type === 'primary' ? theme.color.primary : theme.color.white};
     border-radius: 10px;
     transition: transform 0.3s ease, opacity 0.3s ease;
     position: relative;
