@@ -13,7 +13,7 @@ export const theme: Theme = {
     secondary: 'Raleway',
   },
   color: {
-    primary: '#020EFE',
+    primary: '#000000',
     secondary: '#899BB6',
     background: '#F8F8FA',
     font: '#3F3F3F',
