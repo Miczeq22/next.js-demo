@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
+    "@storybook/addon-actions": "5.3.18",
     "@storybook/addon-knobs": "5.3.18",
     "@storybook/react": "5.3.18",
     "@types/node": "13.13.4",
