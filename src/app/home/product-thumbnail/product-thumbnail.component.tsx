@@ -19,7 +19,7 @@ const productVariants = {
   },
 };
 
-interface ProductThumbnailProps {
+export interface ProductThumbnailProps {
   title: string;
   price: string;
   imageUrl: string;
