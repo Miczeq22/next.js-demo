@@ -1,0 +1,32 @@
+[
+  {
+    "id": "chair",
+    "name": "Chair",
+    "price": "29.99",
+    "imageUrl": "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+  },
+  {
+    "id": "watch",
+    "name": "Watch",
+    "price": "19.99",
+    "imageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1889&q=80"
+  },
+  {
+    "id": "headphones",
+    "name": "Headphones",
+    "price": "59.99",
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+  },
+  {
+    "id": "sunglasses",
+    "name": "Sunglasses",
+    "price": "39.99",
+    "imageUrl": "https://images.unsplash.com/photo-1563903530908-afdd155d057a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+  },
+  {
+    "id": "backpack",
+    "name": "Backpack",
+    "price": "79.99",
+    "imageUrl": "https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=969&q=80"
+  }
+]
