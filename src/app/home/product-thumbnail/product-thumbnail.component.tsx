@@ -6,6 +6,7 @@ import {
   ProductPrice,
 } from './product-thumbnail.styles';
 import Router from 'next/router';
+import { getUSDFormat } from '../../../lib/money';
 
 const productVariants = {
   whileHover: {
@@ -21,7 +22,7 @@ const productVariants = {
 
 export interface ProductThumbnailProps {
   title: string;
-  price: string;
+  price: number;
   imageUrl: string;
   productUrl: string;
 }
@@ -43,7 +44,7 @@ export const ProductThumbnail = ({
     >
       <ProductImage style={{ backgroundImage: `url("${imageUrl}")` }} />
       <ProductTitle>{title}</ProductTitle>
-      <ProductPrice>$ {price}</ProductPrice>
+      <ProductPrice>{getUSDFormat(price)}</ProductPrice>
     </ProductContainer>
   );
 };
