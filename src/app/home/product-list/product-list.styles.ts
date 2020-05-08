@@ -8,5 +8,6 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledListItem = styled(motion.li)`
+  display: flex;
   margin: 1%;
 `;

@@ -32,7 +32,7 @@ export const ProductThumbnail = ({
   imageUrl,
   productUrl,
 }: ProductThumbnailProps) => {
-  const onClick = () => Router.push('/');
+  const onClick = () => Router.push(productUrl);
 
   return (
     <ProductContainer
@@ -41,7 +41,7 @@ export const ProductThumbnail = ({
       variants={productVariants}
       onClick={onClick}
     >
-      <ProductImage src={imageUrl} alt="Product" />
+      <ProductImage style={{ backgroundImage: `url("${imageUrl}")` }} />
       <ProductTitle>{title}</ProductTitle>
       <ProductPrice>$ {price}</ProductPrice>
     </ProductContainer>
