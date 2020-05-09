@@ -1,3 +1,3 @@
-# This is a fcking chair
+# This is a chair
 
-M8
+Say 👋 to chair

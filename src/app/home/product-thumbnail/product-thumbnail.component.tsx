@@ -5,7 +5,8 @@ import {
   ProductTitle,
   ProductPrice,
 } from './product-thumbnail.styles';
-import Router from 'next/router';
+import Link from 'next/link';
+import { getUSDFormat } from '../../../lib/money';
 
 const productVariants = {
   whileHover: {
@@ -21,7 +22,7 @@ const productVariants = {
 
 export interface ProductThumbnailProps {
   title: string;
-  price: string;
+  price: number;
   imageUrl: string;
   productUrl: string;
 }
@@ -32,18 +33,18 @@ export const ProductThumbnail = ({
   imageUrl,
   productUrl,
 }: ProductThumbnailProps) => {
-  const onClick = () => Router.push(productUrl);
-
   return (
-    <ProductContainer
-      whileHover="whileHover"
-      whileTap="whileTap"
-      variants={productVariants}
-      onClick={onClick}
-    >
-      <ProductImage style={{ backgroundImage: `url("${imageUrl}")` }} />
-      <ProductTitle>{title}</ProductTitle>
-      <ProductPrice>$ {price}</ProductPrice>
-    </ProductContainer>
+    <Link href={productUrl}>
+      <ProductContainer
+        whileHover="whileHover"
+        whileTap="whileTap"
+        variants={productVariants}
+        href={productUrl}
+      >
+        <ProductImage style={{ backgroundImage: `url("${imageUrl}")` }} />
+        <ProductTitle>{title}</ProductTitle>
+        <ProductPrice>{getUSDFormat(price)}</ProductPrice>
+      </ProductContainer>
+    </Link>
   );
 };

@@ -16,19 +16,25 @@ import { ThemeType } from '../../../types';
 
 interface HeaderProps {
   themeType?: ThemeType;
+  sticky?: boolean;
 }
 
-export const Header = ({ themeType = 'primary' }: HeaderProps) => {
+export const Header = ({
+  themeType = 'primary',
+  sticky = false,
+}: HeaderProps) => {
   const { isMobile } = useDeviceDetect();
 
   // TODO: Implement mobile nav
   const onHamburgerClick = () => {};
 
   return (
-    <HeaderContainer type={themeType}>
+    <HeaderContainer type={themeType} sticky={sticky}>
       <StyledContainer>
         <Logo>
-          <Link href={getLink(AppRoute.HOME)}>the shop.</Link>
+          <Link href={getLink(AppRoute.HOME)}>
+            <a>the shop.</a>
+          </Link>
         </Logo>
         {isMobile ? (
           <HamburgerContainer>
@@ -42,10 +48,14 @@ export const Header = ({ themeType = 'primary' }: HeaderProps) => {
           <Navigation>
             <NavigationList>
               <NavigationListItem type={themeType}>
-                <Link href={getLink(AppRoute.CART)}>Your cart</Link>
+                <Link href={getLink(AppRoute.CART)}>
+                  <a>Your cart</a>
+                </Link>
               </NavigationListItem>
               <NavigationListItem type={themeType}>
-                <Link href={getLink(AppRoute.LOGIN)}>Login</Link>
+                <Link href={getLink(AppRoute.LOGIN)}>
+                  <a>Login</a>
+                </Link>
               </NavigationListItem>
             </NavigationList>
           </Navigation>

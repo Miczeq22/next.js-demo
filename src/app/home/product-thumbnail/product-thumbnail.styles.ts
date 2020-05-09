@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-export const ProductContainer = styled(motion.article)`
+export const ProductContainer = styled(motion.a)`
   width: 400px;
   display: flex;
   flex-direction: column;
