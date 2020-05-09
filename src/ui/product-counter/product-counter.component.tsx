@@ -7,11 +7,22 @@ import {
   CounterNumber,
 } from './product-counter.styles';
 import { getUSDFormat } from '../../lib/money';
+import { message } from 'antd';
 
 interface ProductCounterProps {
   initialPrice: number;
   onChange: (cents: number) => void;
 }
+
+const getHappyMessage = () => {
+  const messages = ['Nice bro! 😎', 'My Homie! 💪🏼', 'Oh yeah! 🌝'];
+  return messages[Math.floor(Math.random() * messages.length)];
+};
+
+const getSadMessage = () => {
+  const messages = ['Why? 😭', 'Are you sure? 🤔', '... 😠'];
+  return messages[Math.floor(Math.random() * messages.length)];
+};
 
 export const ProductCounter = ({
   initialPrice,
@@ -25,12 +36,14 @@ export const ProductCounter = ({
   ]);
 
   const onIncrease = () => {
+    message.success(getHappyMessage(), 0.5);
     const currentCounter = counter + 1;
     setCounter(currentCounter);
     onChange(initialPrice * currentCounter);
   };
 
   const onDecrease = () => {
+    message.success(getSadMessage(), 0.5);
     const currentCounter = Math.max(1, counter - 1);
     setCounter(currentCounter);
     onChange(initialPrice * currentCounter);

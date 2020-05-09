@@ -3,7 +3,13 @@ import { Container } from '../container/container.styles';
 import { ThemeType } from '../../../types';
 
 export const HeaderContainer = styled.header.attrs(
-  ({ type = 'primary' }: { type?: ThemeType }) => ({ type })
+  ({
+    type = 'primary',
+    sticky = false,
+  }: {
+    type?: ThemeType;
+    sticky?: boolean;
+  }) => ({ type, sticky })
 )`
   background-color: ${({ theme, type }) =>
     type === 'primary' ? 'inherit' : theme.color.primary};
@@ -13,6 +19,21 @@ export const HeaderContainer = styled.header.attrs(
       type === 'primary' ? theme.color.font : theme.color.white};
     text-decoration: none;
   }
+
+  ${({ sticky, theme }) =>
+    sticky &&
+    `
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100%;
+      background-color: ${theme.color.primary};
+
+      & a {
+        color: ${theme.color.white};
+      }
+    `};
 `;
 
 export const StyledContainer = styled(Container)`

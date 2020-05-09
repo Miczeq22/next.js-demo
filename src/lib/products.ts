@@ -18,7 +18,7 @@ export const getProductMetadata = (id: string) => {
   return metadata ?? null;
 };
 
-export const getProduct = (id: string) => {
+export const getProduct = ({ params: { id } }) => {
   const description = fs.readFileSync(
     `${productDescriptionDirectory}/${id}.md`
   );
