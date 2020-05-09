@@ -14,6 +14,7 @@ import ReactMarkdown from 'react-markdown';
 import { ProductCounter } from '../../ui/product-counter/product-counter.component';
 import Link from 'next/link';
 import { getLink, AppRoute } from '../../router/app-routes';
+import { LeftOutlined } from '@ant-design/icons';
 
 interface ProductProps {
   name: string;
@@ -76,6 +77,7 @@ export const Product = ({
             initial="initial"
             animate="animate"
           >
+            <LeftOutlined />
             Back to products
           </BackToProductsLink>
         </Link>
