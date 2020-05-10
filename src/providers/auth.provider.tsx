@@ -7,19 +7,11 @@ import { authStorage } from '../context/auth/auth.storage';
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = React.useReducer(authReducer, authInitialState);
 
-  const setAuthData = (accessToken: string | null) => {
-    if (!accessToken) {
-      return;
-    }
-
-    dispatch(login(accessToken));
-  };
-
   React.useEffect(() => {
     const accessToken = authStorage.getAccessToken();
 
     if (accessToken) {
-      setAuthData(accessToken);
+      dispatch(login(accessToken));
     } else {
       dispatch(logout());
     }

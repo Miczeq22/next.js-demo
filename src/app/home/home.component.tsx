@@ -4,6 +4,7 @@ import { Header } from '../../ui/header/header.component';
 import { ProductThumbnailProps } from './product-thumbnail/product-thumbnail.component';
 import { ProductList } from './product-list/product-list.component';
 import { useStickyNav } from '../../hooks/use-sticky-nav/use-sticky-nav.hook';
+import { useCart } from '../../hooks/use-cart/use-cart.hook';
 
 interface HomeProps {
   products: ProductThumbnailProps[];
