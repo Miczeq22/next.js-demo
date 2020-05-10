@@ -13,6 +13,9 @@ import Link from 'next/link';
 import { getLink, AppRoute } from '../../router/app-routes';
 import { Hamburger } from '../hamburger/hamburger.component';
 import { ThemeType } from '../../../types';
+import { useAuth } from '../../hooks/use-auth/use-auth.hook';
+import { logout } from '../../context/auth/auth.action-creators';
+import { authStorage } from '../../context/auth/auth.storage';
 
 interface HeaderProps {
   themeType?: ThemeType;
@@ -24,9 +27,18 @@ export const Header = ({
   sticky = false,
 }: HeaderProps) => {
   const { isMobile } = useDeviceDetect();
+  const {
+    state: { isLoggedIn },
+    dispatch,
+  } = useAuth();
 
   // TODO: Implement mobile nav
   const onHamburgerClick = () => {};
+
+  const onLogout = () => {
+    dispatch(logout());
+    authStorage.setAccessToken(null);
+  };
 
   return (
     <HeaderContainer type={themeType} sticky={sticky}>
@@ -48,14 +60,20 @@ export const Header = ({
           <Navigation>
             <NavigationList>
               <NavigationListItem type={themeType}>
-                <Link href={getLink(AppRoute.CART)}>
-                  <a>Your cart</a>
-                </Link>
+                {isLoggedIn && (
+                  <Link href={getLink(AppRoute.CART)}>
+                    <a>Your cart</a>
+                  </Link>
+                )}
               </NavigationListItem>
               <NavigationListItem type={themeType}>
-                <Link href={getLink(AppRoute.LOGIN)}>
-                  <a>Login</a>
-                </Link>
+                {isLoggedIn ? (
+                  <a onClick={onLogout}>Logout</a>
+                ) : (
+                  <Link href={getLink(AppRoute.LOGIN)}>
+                    <a>Login</a>
+                  </Link>
+                )}
               </NavigationListItem>
             </NavigationList>
           </Navigation>
