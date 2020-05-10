@@ -15,8 +15,17 @@ import { ProductCounter } from '../../ui/product-counter/product-counter.compone
 import Link from 'next/link';
 import { getLink, AppRoute } from '../../router/app-routes';
 import { LeftOutlined } from '@ant-design/icons';
+import { useAuth } from '../../hooks/use-auth/use-auth.hook';
+import { useCart } from '../../hooks/use-cart/use-cart.hook';
+import {
+  addProductToCart,
+  setProductsInCart,
+} from '../../context/cart/cart.action-creators';
+import Router from 'next/router';
+import { productStorage } from '../../context/cart/cart.storage';
 
 interface ProductProps {
+  id: string;
   name: string;
   price: number;
   imageUrl: string;
@@ -49,14 +58,35 @@ const fadeInUp = {
   },
 };
 
-const onProductChange = (amount: number) => {};
-
 export const Product = ({
+  id,
   name,
   price,
   imageUrl,
   description,
 }: ProductProps) => {
+  const [total, setTotal] = React.useState(price);
+
+  const {
+    state: { isLoggedIn },
+  } = useAuth();
+
+  const {
+    dispatch,
+    state: { products },
+  } = useCart();
+
+  const onAddToCart = () => {
+    const newProducts = [
+      ...products.filter((product) => product.id !== id),
+      { id, total },
+    ];
+
+    productStorage.setProducts(newProducts);
+    dispatch(setProductsInCart(newProducts));
+    Router.push(getLink(AppRoute.HOME));
+  };
+
   return (
     <ProductContainer
       animate={{ opacity: 1 }}
@@ -92,14 +122,20 @@ export const Product = ({
           <ReactMarkdown source={description} />
         </ProductDescription>
         <ProductPrice variants={fadeInUp} initial="initial" animate="animate">
-          <ProductCounter initialPrice={price} onChange={onProductChange} />
+          <ProductCounter initialPrice={price} onChange={setTotal} />
         </ProductPrice>
         <ButtonsContainer
           variants={fadeInUp}
           initial="initial"
           animate="animate"
         >
-          <AddToCartButton type="primary">ADD TO CART</AddToCartButton>
+          <AddToCartButton
+            type="primary"
+            disabled={!isLoggedIn}
+            onClick={onAddToCart}
+          >
+            ADD TO CART
+          </AddToCartButton>
         </ButtonsContainer>
       </ProductInformation>
     </ProductContainer>

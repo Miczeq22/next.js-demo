@@ -5,6 +5,7 @@ import { ResetStyles } from '../theme/reset-styles';
 import { GlobalStyles } from '../theme/global-styles';
 import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './auth.provider';
+import { CartProvider } from './cart.provider';
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,7 +13,9 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       <ThemeProvider theme={theme}>
         <ResetStyles />
         <GlobalStyles />
-        <AuthProvider>{children}</AuthProvider>
+        <CartProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </CartProvider>
       </ThemeProvider>
     </AnimatePresence>
   );
