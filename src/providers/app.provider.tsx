@@ -4,6 +4,7 @@ import { theme } from '../theme/theme.config';
 import { ResetStyles } from '../theme/reset-styles';
 import { GlobalStyles } from '../theme/global-styles';
 import { AnimatePresence } from 'framer-motion';
+import { AuthProvider } from './auth.provider';
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -11,7 +12,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       <ThemeProvider theme={theme}>
         <ResetStyles />
         <GlobalStyles />
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </ThemeProvider>
     </AnimatePresence>
   );
