@@ -7,7 +7,7 @@
     "lint": "eslint './**/*.{ts,tsx}' && echo 'lint success'",
     "lint:fix": "eslint --fix './**/*.{ts,tsx}' && echo 'lint success'",
     "storybook": "ASSET_PREFIX= start-storybook -c .storybook -s ./public",
-    "deploy": "NODE_ENV=production rm -rf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true"
+    "deploy": "ASSET_PREFIX=/next.js-demo NODE_ENV=production rm -rf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,7 +40,7 @@
     }
   },
   "dependencies": {
-    "@zeit/next-less": "1.0.1",
+    "@ant-design/icons": "4.1.0",
     "@zeit/next-sass": "1.0.1",
     "antd": "4.2.0",
     "dinero.js": "1.8.1",
@@ -63,6 +63,7 @@
     "@types/styled-components": "5.1.0",
     "@typescript-eslint/eslint-plugin": "2.30.0",
     "@typescript-eslint/parser": "2.30.0",
+    "@zeit/next-less": "1.0.1",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.1.0",
     "babel-plugin-styled-components": "1.10.7",
