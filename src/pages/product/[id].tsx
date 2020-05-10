@@ -1,8 +1,14 @@
 import React from 'react';
 import { Product } from '../../app/product/product.component';
 import { getAllProductIDs, getProduct } from '../../lib/products';
+import { useRouter } from 'next/router';
 
 const ProductPage = ({ product }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <h2>This product does not exist</h2>;
+  }
+
   return <Product {...product} />;
 };
 

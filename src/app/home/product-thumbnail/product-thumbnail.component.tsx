@@ -34,7 +34,7 @@ export const ProductThumbnail = ({
   productUrl,
 }: ProductThumbnailProps) => {
   return (
-    <Link href={productUrl}>
+    <Link href="/product/[id]" as={productUrl}>
       <ProductContainer
         whileHover="whileHover"
         whileTap="whileTap"
