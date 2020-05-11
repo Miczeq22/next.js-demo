@@ -32,7 +32,7 @@ export const PermissionProvider = ({
     ) {
       Router.push(getLink(AppRoute.HOME));
     }
-  }, [permission]);
+  }, []);
 
   return <>{children}</>;
 };

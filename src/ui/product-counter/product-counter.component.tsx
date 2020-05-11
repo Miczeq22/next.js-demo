@@ -7,28 +7,19 @@ import {
   CounterNumber,
 } from './product-counter.styles';
 import { getUSDFormat } from '../../lib/money';
-import { message } from 'antd';
 
 interface ProductCounterProps {
+  initialCount?: number;
   initialPrice: number;
   onChange: (cents: number) => void;
 }
 
-const getHappyMessage = () => {
-  const messages = ['Nice bro! 😎', 'My Homie! 💪🏼', 'Oh yeah! 🌝'];
-  return messages[Math.floor(Math.random() * messages.length)];
-};
-
-const getSadMessage = () => {
-  const messages = ['Why? 😭', 'Are you sure? 🤔', '... 😠'];
-  return messages[Math.floor(Math.random() * messages.length)];
-};
-
 export const ProductCounter = ({
+  initialCount = 1,
   initialPrice,
   onChange,
 }: ProductCounterProps) => {
-  const [counter, setCounter] = React.useState(1);
+  const [counter, setCounter] = React.useState(initialCount);
 
   const price = React.useMemo(() => initialPrice * counter, [
     counter,
@@ -36,21 +27,19 @@ export const ProductCounter = ({
   ]);
 
   const onIncrease = () => {
-    message.success(getHappyMessage(), 0.5);
     const currentCounter = counter + 1;
     setCounter(currentCounter);
-    onChange(initialPrice * currentCounter);
+    onChange(currentCounter);
   };
 
   const onDecrease = () => {
-    message.success(getSadMessage(), 0.5);
     const currentCounter = Math.max(1, counter - 1);
     setCounter(currentCounter);
-    onChange(initialPrice * currentCounter);
+    onChange(currentCounter);
   };
 
   return (
-    <CounterContainer>
+    <CounterContainer className="product-counter">
       <ButtonsContainer>
         <CounterButton disabled={counter <= 1} onClick={onDecrease}>
           -
