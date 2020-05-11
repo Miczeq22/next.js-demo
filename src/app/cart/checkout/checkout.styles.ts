@@ -59,6 +59,5 @@ export const TotalPrice = styled(motion.h4)`
 
 export const PlaceOrderButton = styled(Button)`
   padding: 0 30px;
-  max-width: 40%;
   height: 40px;
 `;

@@ -17,10 +17,7 @@ import { getLink, AppRoute } from '../../router/app-routes';
 import { LeftOutlined } from '@ant-design/icons';
 import { useAuth } from '../../hooks/use-auth/use-auth.hook';
 import { useCart } from '../../hooks/use-cart/use-cart.hook';
-import {
-  addProductToCart,
-  setProductsInCart,
-} from '../../context/cart/cart.action-creators';
+import { setProductsInCart } from '../../context/cart/cart.action-creators';
 import Router from 'next/router';
 import { productStorage } from '../../context/cart/cart.storage';
 
@@ -65,7 +62,7 @@ export const Product = ({
   imageUrl,
   description,
 }: ProductProps) => {
-  const [total, setTotal] = React.useState(price);
+  const [amount, setAmount] = React.useState(1);
 
   const {
     state: { isLoggedIn },
@@ -79,7 +76,7 @@ export const Product = ({
   const onAddToCart = () => {
     const newProducts = [
       ...products.filter((product) => product.id !== id),
-      { id, total },
+      { id, amount },
     ];
 
     productStorage.setProducts(newProducts);
@@ -122,7 +119,7 @@ export const Product = ({
           <ReactMarkdown source={description} />
         </ProductDescription>
         <ProductPrice variants={fadeInUp} initial="initial" animate="animate">
-          <ProductCounter initialPrice={price} onChange={setTotal} />
+          <ProductCounter initialPrice={price} onChange={setAmount} />
         </ProductPrice>
         <ButtonsContainer
           variants={fadeInUp}

@@ -2,11 +2,12 @@ import React from 'react';
 import { Product } from '../../app/product/product.component';
 import { getAllProductIDs, getProduct } from '../../lib/products';
 import { useRouter } from 'next/router';
+import { ProductNotFound } from '../../app/home/product-not-found/product-not-found.component';
 
 const ProductPage = ({ product }) => {
   const router = useRouter();
   if (router.isFallback) {
-    return <h2>This product does not exist</h2>;
+    return <ProductNotFound />;
   }
 
   return <Product {...product} />;
@@ -14,7 +15,7 @@ const ProductPage = ({ product }) => {
 
 export const getStaticPaths = () => ({
   paths: getAllProductIDs(),
-  fallback: false,
+  fallback: true,
 });
 
 export const getStaticProps = (id) => {

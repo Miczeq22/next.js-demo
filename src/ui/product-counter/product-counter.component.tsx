@@ -29,13 +29,13 @@ export const ProductCounter = ({
   const onIncrease = () => {
     const currentCounter = counter + 1;
     setCounter(currentCounter);
-    onChange(initialPrice * currentCounter);
+    onChange(currentCounter);
   };
 
   const onDecrease = () => {
     const currentCounter = Math.max(1, counter - 1);
     setCounter(currentCounter);
-    onChange(initialPrice * currentCounter);
+    onChange(currentCounter);
   };
 
   return (

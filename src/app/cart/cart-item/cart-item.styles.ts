@@ -12,7 +12,7 @@ export const ItemContainer = styled(Container)`
   border: 1px solid #efefef;
 
   & > .product-counter {
-    max-width: 30%;
+    margin: 0 10px;
   }
 `;
 
