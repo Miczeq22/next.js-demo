@@ -12,6 +12,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch(setProductsInCart(products));
   }, []);
 
+  React.useEffect(() => {
+    productStorage.setProducts(state.products);
+  }, [state.products]);
+
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}

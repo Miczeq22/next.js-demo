@@ -11,6 +11,7 @@ export default {
 
 export const Default = () => (
   <CartItem
+    id="1"
     count={number('count', 1, {
       min: 1,
     })}

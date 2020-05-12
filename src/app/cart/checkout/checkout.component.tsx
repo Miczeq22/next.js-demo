@@ -17,9 +17,28 @@ import {
   CreditCardOutlined,
 } from '@ant-design/icons';
 import { getUSDFormat } from '../../../lib/money';
+import { useCart } from '../../../hooks/use-cart/use-cart.hook';
+import allProducts from '../../../content/products.json';
 
 export const Checkout = () => {
+  const {
+    state: { products },
+  } = useCart();
+
   const shppingCost = 1199;
+  const productsTotal = React.useMemo(
+    () =>
+      products.reduce(
+        (total, product) =>
+          total +
+          product.amount *
+            allProducts.find(
+              (existingProduct) => existingProduct.id === product.id
+            ).price,
+        0
+      ),
+    [products]
+  );
 
   return (
     <CheckoutContainer>
@@ -49,7 +68,7 @@ export const Checkout = () => {
       </CheckoutTile>
       <CheckoutItem>
         <CheckoutLabel>Subtotal</CheckoutLabel>
-        <CheckoutLabel>$605.00</CheckoutLabel>
+        <CheckoutLabel>{getUSDFormat(productsTotal)}</CheckoutLabel>
       </CheckoutItem>
       <CheckoutItem>
         <CheckoutLabel>Shipping</CheckoutLabel>
@@ -57,7 +76,7 @@ export const Checkout = () => {
       </CheckoutItem>
       <CheckoutItem className="special">
         <TotalPrice>Total Price</TotalPrice>
-        <TotalPrice>$616.99</TotalPrice>
+        <TotalPrice>{getUSDFormat(productsTotal + shppingCost)}</TotalPrice>
       </CheckoutItem>
       <PlaceOrderButton type="primary">PLACE YOUR ORDER</PlaceOrderButton>
     </CheckoutContainer>

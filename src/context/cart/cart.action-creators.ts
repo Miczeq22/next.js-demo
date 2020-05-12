@@ -4,6 +4,7 @@ import {
   ADD_PRODUCT,
   REMOVE_PRODUCT,
   SET_PRODUCTS,
+  SET_PRODUCT_AMOUNT,
 } from './cart.reducer';
 
 export const addProductToCart = (product: ProductInfo): CartActionTypes => ({
@@ -21,4 +22,9 @@ export const setProductsInCart = (
 ): CartActionTypes => ({
   products,
   type: SET_PRODUCTS,
+});
+
+export const setProductAmount = (product: ProductInfo): CartActionTypes => ({
+  product,
+  type: SET_PRODUCT_AMOUNT,
 });

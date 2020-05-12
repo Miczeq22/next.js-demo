@@ -14,6 +14,7 @@ export const Default = () => (
   <CartItemList
     items={[
       {
+        id: '1',
         count: 2,
         price: 19999,
         imageUrl:
@@ -21,6 +22,7 @@ export const Default = () => (
         name: 'Product No.1',
       },
       {
+        id: '2',
         count: 5,
         price: 199999,
         imageUrl:
@@ -28,6 +30,7 @@ export const Default = () => (
         name: 'Product No.2',
       },
       {
+        id: '3',
         count: 1,
         price: 1999999,
         imageUrl:
