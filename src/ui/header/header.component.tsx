@@ -16,6 +16,7 @@ import { ThemeType } from '../../../types';
 import { useAuth } from '../../hooks/use-auth/use-auth.hook';
 import { logout } from '../../context/auth/auth.action-creators';
 import { authStorage } from '../../context/auth/auth.storage';
+import Router from 'next/router';
 
 interface HeaderProps {
   themeType?: ThemeType;
@@ -38,6 +39,7 @@ export const Header = ({
   const onLogout = () => {
     dispatch(logout());
     authStorage.setAccessToken(null);
+    Router.push(getLink(AppRoute.HOME));
   };
 
   return (

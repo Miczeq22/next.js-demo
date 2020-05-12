@@ -43,6 +43,16 @@ export const cartReducer = (
       };
     }
 
+    case SET_PRODUCT_AMOUNT: {
+      return {
+        products: state.products.map((product) =>
+          product.id === action.product.id
+            ? { ...product, amount: action.product.amount }
+            : product
+        ),
+      };
+    }
+
     default:
       return state;
   }
