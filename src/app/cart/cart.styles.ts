@@ -14,7 +14,8 @@ export const PageContainer = styled.div`
 export const StyledContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  width: 100%;
+  padding: 0 20px;
 `;
 
 export const CartTitle = styled(motion.h2)`
@@ -24,11 +25,11 @@ export const CartTitle = styled(motion.h2)`
 `;
 
 export const ItemsContainer = styled(motion.section)`
-  width: 60%;
+  width: 65%;
   height: 100%;
 `;
 
 export const CheckoutContainer = styled(motion.section)`
-  width: 40%;
+  width: 35%;
   margin-left: 20px;
 `;
