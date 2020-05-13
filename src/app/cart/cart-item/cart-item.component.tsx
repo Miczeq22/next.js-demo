@@ -38,7 +38,7 @@ export const CartItem = ({
 
   return (
     <ItemContainer>
-      <ProductImage alt="Product" src={imageUrl} />
+      <ProductImage style={{ backgroundImage: `url("${imageUrl}")` }} />
       <ProductName>{name}</ProductName>
       <ProductCounter
         initialPrice={price}

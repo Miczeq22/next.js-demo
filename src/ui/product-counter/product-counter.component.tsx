@@ -47,7 +47,9 @@ export const ProductCounter = ({
         <CounterNumber>{counter}</CounterNumber>
         <CounterButton onClick={onIncrease}>+</CounterButton>
       </ButtonsContainer>
-      <PriceContainer>{getUSDFormat(price)}</PriceContainer>
+      <PriceContainer className="price-container">
+        {getUSDFormat(price)}
+      </PriceContainer>
     </CounterContainer>
   );
 };

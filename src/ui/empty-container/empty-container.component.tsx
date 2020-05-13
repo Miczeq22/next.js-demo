@@ -14,7 +14,10 @@ export const EmptyContainer = ({
 }: EmptyContainerProps) => {
   return (
     <StyledContainer>
-      <StyledImage alt="Empty" src={`${process.env.ASSET_PREFIX}/empty.svg`} />
+      <StyledImage
+        alt="Empty"
+        src={`${process.env.ASSET_PREFIX ?? ''}/empty.svg`}
+      />
       <StyledLabel>{label}</StyledLabel>
     </StyledContainer>
   );
